@@ -6,7 +6,7 @@ import numpy as np
 st.markdown("""
     <style>
     .stApp {
-        background-color: #f4f6f9;  /* Light gray background for a professional look */
+        background-color: #e0e6ed;  /* Blue-gray background for a calming, professional look */
         padding: 20px;
     }
 
@@ -67,7 +67,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Title and introductory text
-st.title('🌿 Mental Health Prediction 🧠')
+st.title('🧠 Mental Health Prediction')
 st.write('Enter the details to predict mental health condition')
 
 # Load model and encoders
@@ -128,12 +128,11 @@ combined_inputs = np.hstack((encoded_inputs, numerical_inputs.flatten())).reshap
 scaled_inputs = scaler.transform(combined_inputs)
 
 # Predict mental health condition
-if st.button("🔍 Predict Mental Health Condition"):
+if st.button("Predict Mental Health Condition"):
     prediction = model.predict(scaled_inputs)
     st.markdown(f'<p class="result-text">Mental Health Condition: {prediction[0]}</p>', unsafe_allow_html=True)
 
 # Footer
 st.markdown('<div class="footer">Developed by Lakhan Jadam</div>', unsafe_allow_html=True)
-
 
 
