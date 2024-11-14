@@ -6,15 +6,16 @@ import numpy as np
 st.markdown("""
     <style>
     .stApp {
-        background-image: url('https://github.com/lakhan9340/Impact-of-Remote-Work-on-Employee-Mental-Health/blob/main/360_F_847507738_hmy77im7GsFvkqYSbHNpNNVgwJBI2B71.jpg');  /* Add your image URL */
+        background-image: url('https://your-image-url-here.com');  /* Add your image URL here */
         background-size: cover;  /* Ensures the image covers the entire screen */
         background-position: center center;  /* Centers the image */
         background-repeat: no-repeat;
+        background-attachment: fixed;  /* Keeps the background fixed during scrolling */
     }
 
     /* Title styling */
     .stTitle {
-        color: #ffffff;
+        color: #2c3e50;
         font-size: 3em;
         font-weight: bold;
         margin-bottom: 0.5em;
@@ -27,7 +28,7 @@ st.markdown("""
         border-radius: 8px;
         padding: 0.5em;
         margin-bottom: 1em;
-        background-color: rgba(255, 255, 255, 0.7);  /* Slightly transparent white background */
+        background-color: rgba(255, 255, 255, 0.8);  /* Slightly transparent white background */
         border: 1px solid #dcdcdc;
     }
 
@@ -123,4 +124,5 @@ scaled_inputs = scaler.transform(combined_inputs)
 if st.button("Predict Mental Health Condition"):
     prediction = model.predict(scaled_inputs)
     st.markdown(f'<p class="result-text">Mental Health Condition: {prediction[0]}</p>', unsafe_allow_html=True)
+
 
