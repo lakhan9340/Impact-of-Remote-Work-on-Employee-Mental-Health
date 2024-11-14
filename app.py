@@ -6,43 +6,41 @@ import numpy as np
 st.markdown(
     """
     <style>
-    /* Background image with gradient overlay */
-    body {
+    /* Full-screen background container */
+    .main-container {
         font-family: 'Arial', sans-serif;
-        background-image: url('https://source.unsplash.com/1600x900/?mental-health,work'); /* Replace with a suitable image URL */
+        background: linear-gradient(to bottom right, #74ebd5, #ACB6E5);
+        color: #333;
+        padding: 20px;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-size: cover;
         background-position: center;
-        color: #333;
     }
 
-    /* Overlay effect for better readability */
-    .main {
+    /* Content box styling */
+    .content-box {
         background-color: rgba(255, 255, 255, 0.8);
-        padding: 1.5rem;
-        border-radius: 8px;
+        padding: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 700px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     /* Title styling */
-    .stTitle {
+    h1 {
         color: #2c3e50;
-        font-size: 3em;
+        font-size: 2.5em;
         font-weight: bold;
-        margin-bottom: 0.5em;
         text-align: center;
-    }
-
-    /* Input box style */
-    .stTextInput, .stNumberInput, .stSelectbox {
-        font-size: 1.1em;
-        border-radius: 8px;
-        padding: 0.5em;
-        margin-bottom: 1em;
-        background-color: #ffffffcc;
-        border: 1px solid #dcdcdc;
+        margin-bottom: 1rem;
     }
 
     /* Button styling */
-    .stButton > button {
+    .stButton button {
         font-size: 1.1em;
         color: white;
         background-color: #3498db;
@@ -53,7 +51,7 @@ st.markdown(
         transition: background-color 0.3s;
     }
 
-    .stButton > button:hover {
+    .stButton button:hover {
         background-color: #2980b9;
     }
 
@@ -68,6 +66,10 @@ st.markdown(
     </style>
     """, unsafe_allow_html=True
 )
+
+# Wrap main content in a div with the class "main-container"
+st.markdown('<div class="main-container">', unsafe_allow_html=True)
+st.markdown('<div class="content-box">', unsafe_allow_html=True)
 
 # Title and inputs
 st.title('Mental Health Prediction')
@@ -134,3 +136,6 @@ scaled_inputs = scaler.transform(combined_inputs)
 if st.button("Predict Mental Health Condition"):
     prediction = model.predict(scaled_inputs)
     st.markdown(f'<p class="result-text">Mental Health Condition: {prediction[0]}</p>', unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True)  # Close content box
+st.markdown('</div>', unsafe_allow_html=True)  # Close main container
