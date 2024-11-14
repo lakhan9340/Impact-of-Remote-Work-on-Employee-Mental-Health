@@ -6,13 +6,14 @@ import numpy as np
 st.markdown(
     """
     <style>
-    /* General app style */
+    /* General app background with gradient */
     body {
         font-family: 'Arial', sans-serif;
-        background-color: #f0f2f6;
+        background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+        color: #333;
     }
 
-    /* Title style */
+    /* Title styling */
     .stTitle {
         color: #2c3e50;
         font-size: 3em;
@@ -27,11 +28,11 @@ st.markdown(
         border-radius: 8px;
         padding: 0.5em;
         margin-bottom: 1em;
-        background-color: #ffffff;
+        background-color: #ffffffcc;
         border: 1px solid #dcdcdc;
     }
 
-    /* Button style */
+    /* Button styling */
     .stButton > button {
         font-size: 1.1em;
         color: white;
@@ -124,6 +125,5 @@ scaled_inputs = scaler.transform(combined_inputs)
 if st.button("Predict Mental Health Condition"):
     prediction = model.predict(scaled_inputs)
     st.markdown(f'<p class="result-text">Mental Health Condition: {prediction[0]}</p>', unsafe_allow_html=True)
-
 
 
