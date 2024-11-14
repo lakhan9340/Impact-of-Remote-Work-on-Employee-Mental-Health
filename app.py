@@ -2,15 +2,24 @@ import joblib
 import streamlit as st
 import numpy as np
 
-# Apply custom CSS styling
+# Apply custom CSS styling with background image and gradient overlay
 st.markdown(
     """
     <style>
-    /* General app background with gradient */
+    /* Background image with gradient overlay */
     body {
         font-family: 'Arial', sans-serif;
-        background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+        background-image: url('https://source.unsplash.com/1600x900/?mental-health,work'); /* Replace with a suitable image URL */
+        background-size: cover;
+        background-position: center;
         color: #333;
+    }
+
+    /* Overlay effect for better readability */
+    .main {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 1.5rem;
+        border-radius: 8px;
     }
 
     /* Title styling */
@@ -125,4 +134,3 @@ scaled_inputs = scaler.transform(combined_inputs)
 if st.button("Predict Mental Health Condition"):
     prediction = model.predict(scaled_inputs)
     st.markdown(f'<p class="result-text">Mental Health Condition: {prediction[0]}</p>', unsafe_allow_html=True)
-
