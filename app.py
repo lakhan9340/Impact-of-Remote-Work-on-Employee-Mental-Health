@@ -1,16 +1,74 @@
 import joblib
 import streamlit as st
 import numpy as np
-# Load model and individual encoders
-model = joblib.load('best_model.joblib')
-label_encoders = joblib.load('label_encoders.joblib') # This is a dictionary of encoders
-scaler = joblib.load('scaler.joblib')
+
+# Apply custom CSS styling
+st.markdown(
+    """
+    <style>
+    /* General app style */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f2f6;
+    }
+
+    /* Title style */
+    .stTitle {
+        color: #2c3e50;
+        font-size: 3em;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+
+    /* Input box style */
+    .stTextInput, .stNumberInput, .stSelectbox {
+        font-size: 1.1em;
+        border-radius: 8px;
+        padding: 0.5em;
+        margin-bottom: 1em;
+        background-color: #ffffff;
+        border: 1px solid #dcdcdc;
+    }
+
+    /* Button style */
+    .stButton > button {
+        font-size: 1.1em;
+        color: white;
+        background-color: #3498db;
+        border: none;
+        padding: 0.6em 1em;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .stButton > button:hover {
+        background-color: #2980b9;
+    }
+
+    /* Result text style */
+    .result-text {
+        font-size: 1.3em;
+        color: #2ecc71;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 1em;
+    }
+    </style>
+    """, unsafe_allow_html=True
+)
 
 # Title and inputs
 st.title('Mental Health Prediction')
 st.write('Enter the details to predict mental health condition')
 
-# Inputs for each feature, accessing the encoder for each column individually
+# Load model and encoders
+model = joblib.load('best_model.joblib')
+label_encoders = joblib.load('label_encoders.joblib')  # Dictionary of encoders
+scaler = joblib.load('scaler.joblib')
+
+# Inputs for each feature
 gender = st.selectbox('Gender', label_encoders['Gender'].classes_)
 age = st.number_input('Age', min_value=18, max_value=65, step=1)
 job_role = st.selectbox('Job Role', label_encoders['Job_Role'].classes_)
@@ -65,6 +123,7 @@ scaled_inputs = scaler.transform(combined_inputs)
 # Predict mental health condition
 if st.button("Predict Mental Health Condition"):
     prediction = model.predict(scaled_inputs)
-    st.write(f"Mental Health Condition: {prediction[0]}")
+    st.markdown(f'<p class="result-text">Mental Health Condition: {prediction[0]}</p>', unsafe_allow_html=True)
+
 
 
