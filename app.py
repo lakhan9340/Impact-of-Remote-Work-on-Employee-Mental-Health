@@ -2,39 +2,30 @@ import joblib
 import streamlit as st
 import numpy as np
 
-# Apply custom CSS styling with background gradient
-st.markdown(
-    """
+# Apply custom CSS styling with gradient background
+st.markdown("""
     <style>
-    /* Full page background with gradient */
-    html, body {
-        font-family: 'Arial', sans-serif;
-        background: linear-gradient(135deg, #8EC5FC, #E0C3FC);  /* Light purple gradient */
-        color: #333;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-    }
-
-    /* Content box styling */
-    .main-content {
-        background-color: rgba(255, 255, 255, 0.85);  /* Slightly transparent white */
-        padding: 2rem;
-        border-radius: 10px;
-        width: 90%;
-        max-width: 700px;
-        margin: 2rem auto;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    .stApp {
+        background: linear-gradient(135deg, #FFB6C1, #FF6347);  /* Soft pink to tomato red gradient */
     }
 
     /* Title styling */
-    h1 {
+    .stTitle {
         color: #2c3e50;
-        font-size: 2.5em;
+        font-size: 3em;
         font-weight: bold;
+        margin-bottom: 0.5em;
         text-align: center;
-        margin-bottom: 1rem;
+    }
+
+    /* Input box style */
+    .stTextInput, .stNumberInput, .stSelectbox {
+        font-size: 1.1em;
+        border-radius: 8px;
+        padding: 0.5em;
+        margin-bottom: 1em;
+        background-color: #ffffffcc;
+        border: 1px solid #dcdcdc;
     }
 
     /* Button styling */
@@ -62,11 +53,7 @@ st.markdown(
         margin-top: 1em;
     }
     </style>
-    """, unsafe_allow_html=True
-)
-
-# Main content box
-st.markdown('<div class="main-content">', unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
 # Title and inputs
 st.title('Mental Health Prediction')
@@ -133,6 +120,3 @@ scaled_inputs = scaler.transform(combined_inputs)
 if st.button("Predict Mental Health Condition"):
     prediction = model.predict(scaled_inputs)
     st.markdown(f'<p class="result-text">Mental Health Condition: {prediction[0]}</p>', unsafe_allow_html=True)
-
-st.markdown('</div>', unsafe_allow_html=True)  # Close content box
-
