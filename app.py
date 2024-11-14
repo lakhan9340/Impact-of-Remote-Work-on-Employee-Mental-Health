@@ -6,7 +6,7 @@ import numpy as np
 st.markdown("""
     <style>
     .stApp {
-        background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Dmental%2Bhealth%2Bwallpaper&psig=AOvVaw3OUx4qxSCgyBqaXaBKkSuD&ust=1731696877694000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNDCpei_3IkDFQAAAAAdAAAAABAw');  /* Add your image URL */
+        background-image: url('https://github.com/lakhan9340/Impact-of-Remote-Work-on-Employee-Mental-Health/blob/main/360_F_847507738_hmy77im7GsFvkqYSbHNpNNVgwJBI2B71.jpg');  /* Add your image URL */
         background-size: cover;  /* Ensures the image covers the entire screen */
         background-position: center center;  /* Centers the image */
         background-repeat: no-repeat;
