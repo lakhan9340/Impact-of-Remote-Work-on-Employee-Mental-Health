@@ -126,4 +126,3 @@ if st.button("Predict Mental Health Condition"):
     prediction = model.predict(scaled_inputs)
     st.markdown(f'<p class="result-text">Mental Health Condition: {prediction[0]}</p>', unsafe_allow_html=True)
 
-
