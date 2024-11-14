@@ -2,16 +2,19 @@ import joblib
 import streamlit as st
 import numpy as np
 
-# Apply custom CSS styling with gradient background
+# Apply custom CSS styling with background image
 st.markdown("""
     <style>
     .stApp {
-        background: linear-gradient(135deg, #FFB6C1, #FF6347);  /* Soft pink to tomato red gradient */
+        background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Dmental%2Bhealth%2Bwallpaper&psig=AOvVaw3OUx4qxSCgyBqaXaBKkSuD&ust=1731696877694000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNDCpei_3IkDFQAAAAAdAAAAABAw');  /* Add your image URL */
+        background-size: cover;  /* Ensures the image covers the entire screen */
+        background-position: center center;  /* Centers the image */
+        background-repeat: no-repeat;
     }
 
     /* Title styling */
     .stTitle {
-        color: #2c3e50;
+        color: #ffffff;
         font-size: 3em;
         font-weight: bold;
         margin-bottom: 0.5em;
@@ -24,7 +27,7 @@ st.markdown("""
         border-radius: 8px;
         padding: 0.5em;
         margin-bottom: 1em;
-        background-color: #ffffffcc;
+        background-color: rgba(255, 255, 255, 0.7);  /* Slightly transparent white background */
         border: 1px solid #dcdcdc;
     }
 
@@ -120,3 +123,4 @@ scaled_inputs = scaler.transform(combined_inputs)
 if st.button("Predict Mental Health Condition"):
     prediction = model.predict(scaled_inputs)
     st.markdown(f'<p class="result-text">Mental Health Condition: {prediction[0]}</p>', unsafe_allow_html=True)
+
